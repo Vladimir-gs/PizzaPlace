@@ -1,6 +1,6 @@
 namespace PizzaPlace.Models
 {
-    public class IU
+    public class UI
     {
         public bool MostrarCanasta {get; set;} = true;
     }
