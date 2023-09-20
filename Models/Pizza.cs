@@ -1,4 +1,4 @@
-namespace Pizzeria.Model
+namespace PizzaPlace.Models
 {
     public enum Especias
     {

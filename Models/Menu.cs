@@ -1,7 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 
-using Pizzeria.Model;
-
-namespace PizzaPlace.Menu
+namespace PizzaPlace.Models
 {
     public class Menu
     {
