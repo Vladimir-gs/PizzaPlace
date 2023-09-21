@@ -75,30 +75,47 @@
 
 
 
-<h1>Por favor ingresa tus datos</h1>
+<h2>Por favor ingresa tus datos</h2>
 
-<EditForm Model="@Estado.Canasta.Clientes" OnValidSubmit="PlaceOrder">
+<EditForm Model="@Estado.Canasta.Clientes" OnValidSubmit="RealizarPedido">
+
     <DataAnnotationsValidator />
+    <ValidationSummary/>
+
     <fieldset>
         <div class="row mb-2">
-            <label class="col-2" for="name">Nombre:</label>
-            <input class="col-6" id="name" @bind="Estado.Canasta.Clientes.Nombre" />
-            <div class="validation-message">Por favor proporcionar un Nombre</div>
+            <label class="col-2" for="Nombre">Nombre:</label>
+            <InputText class="form-control col-6 valid" @bind-Value="@Estado.Canasta.Clientes.Nombre" />
         </div>
+        <div class="row mb-2">
+            <div class="col-6 offset-0">
+                <ValidationMessage For="@(() => Estado.Canasta.Clientes.Nombre)" />
+            </div>
+        </div>
+
         <div class="row mb-2">
             <label class="col-2" for="street">Calle:</label>
-            <input class="col-6" id="street" @bind="Estado.Canasta.Clientes.Calle" />
-            <div class="validation-message">Por favor ingrese la calle</div>
-
+            <InputText class="form-control col-6" @bind-Value="@Estado.Canasta.Clientes.Calle" />
         </div>
         <div class="row mb-2">
-            <label class="col-2" for="city">Ciudad:</label>
-            <input class="col-6" id="city" @bind="Estado.Canasta.Clientes.Ciudad" />
-            <div class="validation-message">Por favor Ingrese la ciudad</div>
-
-            
+            <div class="col-6 offset-0">
+                <ValidationMessage For="@(() => Estado.Canasta.Clientes.Calle)" />
+            </div>
         </div>
-            <button class="mx-auto w-25 btn btn-success" @onclick="PlaceOrder">Verificar</button>
+
+        <div class="row mb-2">
+            <label class="col-2" for="city">Ciudad:</label>
+            <InputText class="form-control col-6" @bind-Value="@Estado.Canasta.Clientes.Ciudad" />
+        </div>
+        <div class="row mb-2">
+            <div class="col-6 offset-0">
+                <ValidationMessage For="@(() => Estado.Canasta.Clientes.Ciudad)" />
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <button class="mx-auto w-25 btn btn-success" @onclick="RealizarPedido">Checkout</button>
+        </div>
     </fieldset>
 </EditForm>
 <!-- End customer entry -->
@@ -127,7 +144,7 @@
     private void RemoverCanasta(int pos)
     => Estado.Canasta.RemoveAt(pos);
 
-    private void PlaceOrder()
+    private void RealizarPedido()
     {
         Console.WriteLine("Placing order");
     }
